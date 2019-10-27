@@ -8,7 +8,7 @@ const preUsersSlice = createSlice({
     token: "",
     message: ""
   },
-  name: "channels",
+  name: "users",
   reducers: {
     loginSucces: (state, action) => {
       return { ...state, status: 0, token: action.payload };

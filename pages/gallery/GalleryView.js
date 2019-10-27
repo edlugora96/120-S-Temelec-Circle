@@ -23,8 +23,8 @@ const Home = props => {
         title="Home | 120 S Temelec Circle, Sonoma"
         description="120 S Temelec Circle, Sonoma Home view"
       />
-      <Link href="/gallery">
-        <a>Gallery</a>
+      <Link href="/">
+        <a>Home</a>
       </Link>
       <h1>Hello world</h1>
     </React.Fragment>

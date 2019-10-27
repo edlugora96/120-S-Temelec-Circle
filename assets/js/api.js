@@ -3,7 +3,10 @@ import { getToken } from "$utils/authenticator";
 export const API_HOST = process.env.API_HOST || "https://propertysonoma.com";
 
 const api = axios.create({
-  baseURL: API_HOST
+  baseURL: API_HOST,
+  headers: {
+    "Access-Control-Allow-Origin": "*"
+  }
 });
 
 api.interceptors.request.use(async config => {
