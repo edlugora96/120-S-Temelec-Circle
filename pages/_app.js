@@ -4,13 +4,12 @@ import withRedux from "next-redux-wrapper";
 import Router from "next/router";
 import { withRouter } from "next/router";
 import { initStore } from "$redux/store";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import Head from "next/head";
 
 import { store } from "$redux/store";
 import * as pages from "$redux/pages";
 
-Router.events.on("routeChangeStart", url => {
+Router.events.on("routeChangeStart", (url) => {
   store.get.dispatch(pages.pagesSlice.actions.pageLoading());
 });
 Router.events.on("routeChangeComplete", () => {
@@ -25,7 +24,6 @@ class MyApp extends App {
     const { Component, pageProps, store } = this.props;
     return (
       <Provider store={store}>
-        <CssBaseline />
         <Component {...pageProps} {...store.getState()} />
       </Provider>
     );

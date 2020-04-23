@@ -1,4 +1,4 @@
-import { createSlice } from "redux-starter-kit";
+import { createSlice } from "@reduxjs/toolkit";
 import axios from "$utils/api";
 import { login } from "$utils/authenticator";
 import { getToken } from "$utils/authenticator";
@@ -6,7 +6,7 @@ const preUsersSlice = createSlice({
   initialState: {
     status: 0,
     token: "",
-    message: ""
+    message: "",
   },
   name: "users",
   reducers: {
@@ -21,8 +21,8 @@ const preUsersSlice = createSlice({
     },
     loginError: (state, action) => {
       return { ...state, status: 2, message: action.payload, token: "" };
-    }
-  }
+    },
+  },
 });
 
 const {
@@ -35,7 +35,7 @@ const {
 
 const actions = {
   ...rest,
-  login: payload => async dispatch => {
+  login: (payload) => async (dispatch) => {
     dispatch(loginReset());
     try {
       dispatch(loginLoading());
@@ -46,10 +46,10 @@ const actions = {
       dispatch(loginError(err.response.data));
       return err;
     }
-  }
+  },
 };
 
 export const usersSlice = {
   reducer: preUsersSlice.reducer,
-  actions
+  actions,
 };

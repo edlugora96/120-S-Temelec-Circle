@@ -1,22 +1,8 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import { NextSeo } from "next-seo";
 import Link from "next/link";
 
-const useStyles = makeStyles(theme => ({
-  section: {
-    display: "flex",
-    maxWidth: 1200,
-    height: "100vh",
-    margin: "auto",
-    flexDirection: "column",
-    alignItems: "center",
-    padding: "100px 20px"
-  }
-}));
-
-const Home = props => {
-  const classes = useStyles();
+const Home = (props) => {
   return (
     <React.Fragment>
       <NextSeo

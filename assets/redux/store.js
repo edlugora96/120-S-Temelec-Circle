@@ -1,4 +1,4 @@
-import { configureStore, getDefaultMiddleware } from "redux-starter-kit";
+import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import rootReducers from "./rootReducers";
 import { getToken } from "$utils/authenticator";
 export let store = {};
@@ -8,18 +8,18 @@ const initStoreSSR = {
   users: {
     status: 0,
     token: "",
-    message: []
-  }
+    message: [],
+  },
 };
 
 export const initStore = (preloadedState = {}) => {
   const get = configureStore({
     reducer: rootReducers,
     preloadedState: { ...preloadedState, ...initStoreSSR },
-    middleware: [...getDefaultMiddleware()]
+    middleware: [...getDefaultMiddleware()],
   });
   store = {
-    get
+    get,
   };
   return get;
 };

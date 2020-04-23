@@ -1,9 +1,9 @@
-import { createSlice } from "redux-starter-kit";
+import { createSlice } from "@reduxjs/toolkit";
 import axios from "$utils/api";
 
 const prePagesSlice = createSlice({
   initialState: {
-    status: 0
+    status: 0,
   },
   name: "pages",
   reducers: {
@@ -18,17 +18,17 @@ const prePagesSlice = createSlice({
     },
     pageError: (state, action) => {
       return { ...state, status: 2 };
-    }
-  }
+    },
+  },
 });
 
 const { ...rest } = prePagesSlice.actions;
 
 const actions = {
-  ...rest
+  ...rest,
 };
 
 export const pagesSlice = {
   reducer: prePagesSlice.reducer,
-  actions
+  actions,
 };

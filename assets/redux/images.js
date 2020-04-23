@@ -1,9 +1,9 @@
-import { createSlice } from "redux-starter-kit";
+import { createSlice } from "@reduxjs/toolkit";
 import axios from "$utils/api";
 
 const preImagesSlice = createSlice({
   initialState: {
-    status: 0
+    status: 0,
   },
   name: "images",
   reducers: {
@@ -18,8 +18,8 @@ const preImagesSlice = createSlice({
     },
     imageError: (state, action) => {
       return { ...state, status: 2 };
-    }
-  }
+    },
+  },
 });
 
 const {
@@ -35,7 +35,7 @@ let cancelLoadImage = {};
 
 const actions = {
   ...rest,
-  loadImage: payload => async dispatch => {
+  loadImage: (payload) => async (dispatch) => {
     if (cancelLoadImage[payload.name]) {
       cancelLoadImage[payload.name](`image ${payload.name} canceled`);
       cancelLoadImage[payload.name] = null;
@@ -44,7 +44,7 @@ const actions = {
     try {
       dispatch(imageLoading());
       const res = await axios.get(payload.url, {
-        responseType: "blob"
+        responseType: "blob",
         // cancelToken: new CancelToken(function executor(c) {
         //   cancelLoadImage[payload.name] = c;
         // })
@@ -57,7 +57,7 @@ const actions = {
           imageSucces({
             url: imageDataUrl,
             name: payload.name,
-            originalUrl: payload.url
+            originalUrl: payload.url,
           })
         );
       };
@@ -67,10 +67,10 @@ const actions = {
       dispatch(imageError({}));
       return err;
     }
-  }
+  },
 };
 
 export const imagesSlice = {
   reducer: preImagesSlice.reducer,
-  actions
+  actions,
 };
